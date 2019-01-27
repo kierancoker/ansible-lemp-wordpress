@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 API_VERSION = "2"
-DOMAIN      = "nip.io"
+DOMAIN      = "wordpress"
 PRIVATE_KEY = "~/.ssh/id_rsa"
 PUBLIC_KEY  = '~/.ssh/id_rsa.pub'
 CENTOS_IP   = '192.168.50.6'
