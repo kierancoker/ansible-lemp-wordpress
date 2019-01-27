@@ -1,0 +1,29 @@
+---
+# ubuntu specific tasks file for roles/stack-install
+- name: update cache and install the system packages
+  apt:
+    name: "{{ system_packages }}"
+    update_cache: "yes"
+
+- name: add the apt keys from a key server
+  apt_key:
+    keyserver: "{{ item.key_server }}"
+    id: "{{ item.key }}"
+  with_items: "{{ repo_keys }}"
+
+- name: add the apt keys from a URL
+  apt_key:
+    url: "{{ item }}"
+    state: present
+  with_items: "{{ repo_keys_url }}"
+
+- name: install the repo packages
+  apt_repository:
+    repo: "{{ repo_packages }}"
+    state: "present"
+    update_cache: "yes"
+
+- name: install the stack packages
+  apt:
+    name: "{{ stack_packages + extra_packages }}"
+    state: "installed"

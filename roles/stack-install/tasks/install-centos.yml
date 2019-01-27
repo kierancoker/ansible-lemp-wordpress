@@ -1,0 +1,30 @@
+---
+# centos specific tasks file for roles/stack-install
+- name: install the repo packages
+  yum:
+    name: "{{ repo_packages }}"
+    state: "installed"
+
+- name: add the NGINX mainline repo
+  yum_repository:
+    name: "{{ nginx_repo.name }}"
+    description: "{{ nginx_repo.description }}"
+    baseurl: "{{ nginx_repo.baseurl }}"
+    gpgcheck: "{{ nginx_repo.gpgcheck }}"
+    enabled: "{{ nginx_repo.enabled }}"
+
+- name: update all of the installed packages
+  yum:
+    name: "*"
+    state: "latest"
+    update_cache: "yes"
+
+- name: remove the packages so that they can be replaced
+  yum:
+    name: "{{ packages_remove }}"
+    state: "absent"
+
+- name: install the stack packages
+  yum:
+    name: "{{ system_packages + stack_packages + extra_packages }}"
+    state: "installed"
