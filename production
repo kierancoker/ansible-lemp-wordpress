@@ -1,9 +1,8 @@
-centos ansible_host=192.168.50.6.nip.io
-ubuntu ansible_host=192.168.50.7.nip.io ansible_python_interpreter=/usr/bin/python3
+# please enter your production detials here, replace 'example'
+example ansible_host=example.com
 
 [wordpress]
-centos
-ubuntu
+example
 
 [wordpress:vars]
 ansible_connection=ssh
