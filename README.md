@@ -3,6 +3,8 @@ This targets centos (rhel based) or ubuntu (debian based) using a vagrant virtua
 
 To apply to a production install, please update the production host file
 
+**NOTE** this installs a wordpress instance purely as an example of the LEMP are installed and correctly working.
+
 ## Dependencies
 You will need Vagrant, Python and Ansible installed to run this.
 
