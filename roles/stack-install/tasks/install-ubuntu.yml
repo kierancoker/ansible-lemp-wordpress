@@ -19,9 +19,10 @@
 
 - name: install the repo packages
   apt_repository:
-    repo: "{{ repo_packages }}"
+    repo: "{{ item }}"
     state: "present"
     update_cache: "yes"
+  with_items: "{{ repo_packages }}"
 
 - name: install the stack packages
   apt:
