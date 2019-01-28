@@ -7,7 +7,6 @@
     os_family: "{{ ansible_os_family }}"
 
 # Download WP-CLI and set permissions.
-##################################################################################################
 
 - name: download wp-cli
   get_url:
@@ -20,7 +19,6 @@
     mode: "0755"
 
 # Create the WordPress database and user
-##################################################################################################
 
 - name: create the wordpress database
   mysql_db:
@@ -36,7 +34,6 @@
   with_items: "{{ mariadb.hosts }}"
 
 # Download WordPress
-##################################################################################################
 
 - name: are the wordpress files already there?
   stat:
@@ -58,7 +55,6 @@
   when: wp_installed.stat.exists == False
 
 # Configure WordPress
-##################################################################################################
 
 - name: is wordpress already configured?
   stat:
@@ -74,7 +70,6 @@
   when: wp_configured.stat.exists == False
 
 # Install WordPress
-##################################################################################################
 
 - name: do we need to install wordpress?
   shell: "{{ wp_cli.path }} core is-installed"
@@ -94,7 +89,6 @@
   when: wp_installed.rc == 1
 
 # Install Plugins
-##################################################################################################
 
 - name: do we need to install the plugins?
   shell: "{{ wp_cli.path }} plugin is-installed {{ item }}"
@@ -126,7 +120,6 @@
   when: wp_plugin_installed_skip == false
 
 # Install Theme
-##################################################################################################
 
 - name: do we need to install the theme?
   shell: "{{ wp_cli.path }} theme is-installed {{ wordpress.theme }}"
