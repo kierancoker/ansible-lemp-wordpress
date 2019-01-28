@@ -11,5 +11,5 @@ next you will need to run ``` ansible-playbook -i production site.yml ```
 
 After the Ansible playbook has finished, you can test the installation by heading to
 
-- 192.168.50.6.centos
-- 192.168.50.7.ubuntu
+- 192.168.50.6.nip.io
+- 192.168.50.7.nip.io

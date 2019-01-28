@@ -1,5 +1,5 @@
-centos ansible_host=192.168.50.6.wordpress
-ubuntu ansible_host=192.168.50.7.wordpress ansible_python_interpreter=/usr/bin/python3
+centos ansible_host=192.168.50.6.nip.io
+ubuntu ansible_host=192.168.50.7.nip.io ansible_python_interpreter=/usr/bin/python3
 
 [wordpress]
 centos
